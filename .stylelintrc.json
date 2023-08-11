@@ -1,13 +1,6 @@
 {
-  "extends": ["stylelint-config-standard-scss", "stylelint-config-prettier"],
+  "extends": ["stylelint-config-prettier"],
   "overrides": [
-    {
-      "files": ["**/*.scss"],
-      "customSyntax": "postcss-scss",
-      "rules": {
-        "at-rule-no-unknown": null
-      }
-    },
     {
       "files": ["**/*.{ts,tsx}"],
       "customSyntax": "@stylelint/postcss-css-in-js",
