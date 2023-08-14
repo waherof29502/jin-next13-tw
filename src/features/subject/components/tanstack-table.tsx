@@ -96,7 +96,7 @@ const TanStackTable = () => {
     getPaginationRowModel: getPaginationRowModel()
   });
   return (
-    <div className="p-2 w-full max-w-5xl mx-auto text-white">
+    <div className="p-2 w-full max-w-5xl mx-auto text-white font-">
       <div className="flex justify-between mb-2">
         <div className="w-full flex items-center gap-1">
           <SearchIcon />
