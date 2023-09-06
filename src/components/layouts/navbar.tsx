@@ -12,17 +12,18 @@ import {
 } from '@mui/material';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 import { RootState } from '@/store';
 
-import { setMode } from '../../../store/auth/authSlice';
-import FlexBetween from '../components/flex-between';
+import { setLogout, setMode } from '../../store/auth/authSlice';
+import FlexBetween from '../ui/flex-between';
 
 const Navbar = () => {
   const { palette } = useTheme();
   const [isMobileMenuToggled, setIsMobileMenuToggled] = useState(false);
   const dispatch = useDispatch();
-
+  const navigate = useNavigate();
   const user = useSelector((state: RootState) => state.auth.user);
   const isNonMobileScreens = useMediaQuery('(min-width: 1000px)');
 
@@ -35,6 +36,7 @@ const Navbar = () => {
           fontWeight="bold"
           fontSize="clamp(1rem, 2rem, 2.25rem)"
           color="primary"
+          onClick={() => navigate('/home')}
           sx={{
             '&:hover': {
               color: palette.primary.light,
@@ -125,6 +127,7 @@ const Navbar = () => {
                 <MenuItem value={fullName}>
                   <Typography>{fullName}</Typography>
                 </MenuItem>
+                <MenuItem onClick={() => dispatch(setLogout())}>Log out</MenuItem>
               </Select>
             </FormControl>
           </FlexBetween>

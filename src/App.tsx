@@ -1,23 +1,18 @@
-import { CssBaseline, ThemeProvider } from '@mui/material';
-import { createTheme } from '@mui/material/styles';
-import { useMemo } from 'react';
 import { useSelector } from 'react-redux';
+import { Outlet } from 'react-router-dom';
 
 import { RootState } from '@/store';
 
-import Navbar from './features/subject/pages/navbar';
-import { themeSettings } from './themes/index';
+import Navbar from './components/layouts/navbar';
+import { Providers } from './components/providers';
 
 function App() {
   const mode = useSelector((state: RootState) => state.auth.mode);
-  const theme = useMemo(() => createTheme(themeSettings(mode)), [mode]);
   return (
-    <div className="App">
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <Navbar />
-      </ThemeProvider>
-    </div>
+    <Providers mode={mode}>
+      <Navbar />
+      <Outlet />
+    </Providers>
   );
 }
 
